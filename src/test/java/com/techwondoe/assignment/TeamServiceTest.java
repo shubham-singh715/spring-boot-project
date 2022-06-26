@@ -46,21 +46,25 @@ public class TeamServiceTest {
         company.setCompanyCEO("Raj");
         company.setCompanyAddress("India");
 
-        companyRepository.save(company);
-        when(companyRepository.findById(UUID.fromString("00845cd2-5a78-441f-9c54-c7cfdfcba437"))).thenReturn(Optional.ofNullable(company));
 
-        when(teamRepository.save(team)).thenReturn(team);
+
     }
 
     @Test
     public void addTeam(){
 
+        companyRepository.save(company);
+        when(companyRepository.findById(UUID.fromString("00845cd2-5a78-441f-9c54-c7cfdfcba437"))).thenReturn(Optional.ofNullable(company));
+        when(teamRepository.save(team)).thenReturn(team);
         assertEquals(team.getTeamLeadName(),teamService.addTeam(team,UUID.fromString("00845cd2-5a78-441f-9c54-c7cfdfcba437")).getTeamLeadName());
 
     }
 
     @Test
     public void getAllTeam(){
+        companyRepository.save(company);
+        when(companyRepository.findById(UUID.fromString("00845cd2-5a78-441f-9c54-c7cfdfcba437"))).thenReturn(Optional.ofNullable(company));
+        when(teamRepository.save(team)).thenReturn(team);
 
         assertEquals(company.getCompanyName(),teamService.getAllTeams(UUID.fromString("00845cd2-5a78-441f-9c54-c7cfdfcba437")).getCompanyName());
     }

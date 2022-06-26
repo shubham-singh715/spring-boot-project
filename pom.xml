@@ -94,6 +94,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<finalName>spring-boot-assignment</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
